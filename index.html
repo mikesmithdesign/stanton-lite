@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<!--
+  Stanton's Lite — free one-page barbershop template.
+  Free for personal and commercial use. Attribution appreciated.
+  Full version (cuts & prices, chairs, gallery, booking form, live map,
+  four colour packs, JSON config, Astro): see README.md.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stanton's Lite : free barbershop template</title>
+<meta name="description" content="Stanton's Lite is a free one-page HTML template for barbershops. Dark, warm, photography-forward. Full Astro version available.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Besley:ital,wght@0,700;1,700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">Stanton's</a>
+    <a class="tel" href="tel:+441632960118">01632 960 118</a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-img"><img src="img/hero.jpg" alt="Inside the shop: barbers working at their chairs under warm light" fetchpriority="high"></div>
+  <div class="wrap">
+    <h1>A proper cut, no&nbsp;fuss.</h1>
+    <p class="h-sub">Three chairs on Bridge Street, Kelford. Walk in whenever the door's open, or ring to book the barber you want.</p>
+    <div class="h-cta">
+      <a class="btn" href="#hours">Opening hours</a>
+      <a class="btn ghost" href="tel:+441632960118">Ring 01632 960 118</a>
+    </div>
+  </div>
+</section>
+
+<section class="staples">
+  <div class="wrap">
+    <div class="st-head">
+      <h2>The staples.</h2>
+    </div>
+    <div class="st-row">
+      <div class="st reveal">
+        <p class="p">&pound;26</p>
+        <h3>The haircut</h3>
+        <p>Scissors, clippers or both. Washed, cut and finished&nbsp;properly.</p>
+      </div>
+      <div class="st reveal">
+        <p class="p">&pound;28</p>
+        <h3>Skin fade</h3>
+        <p>Zero to whatever you're keeping on top. Blended&nbsp;right.</p>
+      </div>
+      <div class="st reveal">
+        <p class="p">&pound;38</p>
+        <h3>Cut &amp; beard</h3>
+        <p>The haircut and the beard sorted in one&nbsp;sitting.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="crew">
+  <div class="wrap c-grid">
+    <div class="ph reveal"><img src="img/barber-1.jpg" alt="Danny Stanton, scissors in hand"></div>
+    <div>
+      <h2>Three chairs, three barbers.</h2>
+      <p>Danny on the scissors and the classics, Cal on fades, Jess on beards, restyles and kids. Book a name if you've got a favourite, or take whoever's free.</p>
+    </div>
+  </div>
+</section>
+
+<section class="word">
+  <div class="wrap">
+    <p class="wbody reveal">&ldquo;Cal fixed a fade another shop had wrecked, two days before my wedding. <b>I've not let anyone else near my head&nbsp;since.&rdquo;</b></p>
+    <p class="wsig">Rob T., in the chair every three weeks</p>
+  </div>
+</section>
+
+<section class="closer" id="hours">
+  <div class="wrap">
+    <p class="cl-door" id="doorLine">Checking the door.</p>
+    <div class="cl-grid">
+      <div class="cl-hours">
+        <div class="cl-hr"><span class="cl-day">Tuesday to Thursday</span><span class="cl-time">9am to 6pm</span></div>
+        <div class="cl-hr"><span class="cl-day">Friday</span><span class="cl-time">9am to 7pm</span></div>
+        <div class="cl-hr"><span class="cl-day">Saturday</span><span class="cl-time">8am to 4pm</span></div>
+        <div class="cl-hr"><span class="cl-day">Sunday &amp; Monday</span><span class="cl-time">Closed</span></div>
+      </div>
+      <div class="cl-side">
+        <p class="cl-addr">9 Bridge Street, Kelford KD2 3AS</p>
+        <a class="tel" href="tel:+441632960118">01632 960 118</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-line">
+      <span class="fbrand">Stanton's</span>
+      <span>9 Bridge Street, Kelford KD2 3AS</span>
+      <a href="tel:+441632960118">01632 960 118</a>
+      <span>Closed Sunday and Monday</span>
+      <span>&copy; Stanton's 2026</span>
+    </div>
+    <p class="foot-disc">A fictional barbershop. Free demo template by Mike Smith Design. Photography is placeholder, replace for production.</p>
+  </div>
+</footer>
+
+<script src="lenis.min.js"></script>
+<script>
+const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!REDUCED && window.Lenis) {
+  const lenis = new Lenis({ lerp: .09 });
+  (function raf(t) { lenis.raf(t); requestAnimationFrame(raf); })();
+}
+document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+  e.preventDefault();
+  document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+}));
+
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+}), { threshold: .16 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+if (REDUCED) document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+
+/* live door status: edit HOURS to match your shop (day 0 = Sunday, null = closed) */
+const HOURS = { 0: null, 1: null, 2: [9, 18], 3: [9, 18], 4: [9, 18], 5: [9, 19], 6: [8, 16] };
+const now = new Date(), day = now.getDay(), hr = now.getHours() + now.getMinutes() / 60;
+const today = HOURS[day], isOpen = !!today && hr >= today[0] && hr < today[1];
+const fmt = x => { const h24 = Math.floor(x), h = ((h24 + 11) % 12) + 1; return h + (h24 < 12 ? 'am' : 'pm'); };
+document.getElementById('doorLine').textContent = isOpen
+  ? 'Open till ' + fmt(today[1]) + ' today.'
+  : (today && hr < today[0] ? 'Opens ' + fmt(today[0]) + ' today.' : 'Closed today.');
+</script>
+</body>
+</html>
