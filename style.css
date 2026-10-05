@@ -104,3 +104,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
   .reveal{opacity:1!important;transform:none!important;animation:none!important;transition:none!important}
   .hero .hero-img img{animation:none!important}
 }
+
+/* the template credit should read as a link, like the other footer links */
+a[href*="mikesmithdesign.co.uk"]{text-decoration:underline;text-underline-offset:2px}
