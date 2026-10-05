@@ -36,4 +36,4 @@ a live open/closed walk-in panel, a live map, four colour packs, and
 JSON-driven content (rebrand the whole site from one config file), built as
 an Astro 7 project.
 
-→ https://mikesmithdesign.gumroad.com/l/stanton-astro-theme (£20)
+→ [Stanton, the full Astro theme for barbershops](https://mikesmithdesign.co.uk/themes/stanton) (£20)
